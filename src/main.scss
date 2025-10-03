@@ -1,95 +1,155 @@
-$bg-color: rgb(0, 27, 109);
-$w:100px;
+// $bg-color: rgb(0, 27, 109);
+// $w:100px;
 
-@mixin main-font {
-    // color: rgb(0, 255, 255);
-    @include set-color-text();
-    font-size: 20px;
-    font-style: italic;
-    line-height: 28px;
+// @mixin main-font {
+//     // color: rgb(0, 255, 255);
+//     @include set-color-text();
+//     font-size: 20px;
+//     font-style: italic;
+//     line-height: 28px;
+// }
+
+// @mixin paddings($value, $border-color:black) {
+//     border: 1px dashed $border-color;
+//     padding-top: $value*2;
+//     padding-bottom: $value*3;
+//     padding-left: $value;
+//     padding-right: $value;
+// }
+
+// @mixin set-color-text {
+//     @if(lightness($bg-color)< 30%) {
+//         color: rgb(255, 255, 255);
+//     }
+//     @else {
+//         color: rgb(2, 2, 36);
+//     }
+// }
+
+// body {
+//     background-color: $bg-color;
+//     @include set-color-text();
+// }
+// .block {
+//     width: $w + 200px;
+//     margin: $w / 2;
+//     padding: $w - 50px;
+//     border: $w * 0.1 solid red;
+//     background-color: adjust-color(rgb(47, 12, 104), $red: 50%);
+
+//     img {
+//     width: 100% - 10%;
+// }
+//  p {
+//     color: adjust-color(yellow, $lightness: 30%);
+
+//     .bold {
+//         font-weight: bold;
+//     }
+//     &:last-child {
+//         font-style: italic;
+// }
+// }
+// }
+
+// p {
+//     @include main-font;
+//     @include paddings(20px, rgb(13, 228, 13));
+// }
+
+// @for $i from 1 to 5 {
+//     .item-#{$i} {
+//     width: 90%;
+//     height: 50px;
+//     background-color:adjust-color(rgb(5, 2, 53),$lightness: 100% / $i);
+// }
+// }
+
+// /****************************************верстка меню по ВЕМ******************************************/
+// .menu {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     display: flex;
+//     flex-direction: row;
+//     list-style: none;
+//     gap: 20px;
+//     &__item {
+//         color: rgb(84, 209, 188);
+//         text-transform: uppercase;
+//         text-decoration: none;
+//         transition: all 0.4s;
+//         &:hover {
+//             color: rgb(228, 231, 23);
+//         }
+//         &--active {
+//             font-weight: bold;
+//             color: crimson;
+//         }
+//         @media(max-width:900px){
+//             font-size: 20px;
+//         }
+//     }
+//     @media(max-width:768px){
+//         display: none;
+//     }
+// }
+
+$bg-btn: rgb(36, 170, 194);
+$color-btn: rgb(255, 255, 255);
+$font-size-btn: 20px;
+$radius-btn: 10px;
+
+.auth__btn--login {
+    background-color: $bg-btn;
+    color: adjust-color($bg-btn,$hue:180deg);
+    font-size: $font-size-btn;
+    border-radius: $radius-btn;
+    padding-left: $font-size-btn*0.5;
+    padding-right: $font-size-btn*0.5;
+    border: none;
+    margin: 5px;
 }
 
-@mixin paddings($value, $border-color:black) {
-    border: 1px dashed $border-color;
-    padding-top: $value*2;
-    padding-bottom: $value*3;
-    padding-left: $value;
-    padding-right: $value;
+.auth__btn--reg {
+    background-color: adjust-color($bg-btn, $hue:270deg);
+    color:adjust-color($bg-btn,$lightness: -10%);
 }
 
-@mixin set-color-text {
-    @if(lightness($bg-color)< 30%) {
-        color: rgb(255, 255, 255);
+.auth {
+    max-width: 200px;
+    background-color: adjust-color($bg-btn,$lightness:40% );
+    padding: 20px;
+
+    &__value {
+        border-radius: $radius-btn;
     }
-    @else {
-        color: rgb(2, 2, 36);
-    }
-}
-
-body {
-    background-color: $bg-color;
-    @include set-color-text();
-}
-.block {
-    width: $w + 200px;
-    margin: $w / 2;
-    padding: $w - 50px;
-    border: $w * 0.1 solid red;
-    background-color: adjust-color(rgb(47, 12, 104), $red: 50%);
-
-    img {
-    width: 100% - 10%;
-}
- p {
-    color: adjust-color(yellow, $lightness: 30%);
-
-    .bold {
-        font-weight: bold;
-    }
-    &:last-child {
-        font-style: italic;
-}
-}
-}
-
-p {
-    @include main-font;
-    @include paddings(20px, rgb(13, 228, 13));
-}
-
-@for $i from 1 to 5 {
-    .item-#{$i} {
-    width: 90%;
-    height: 50px;
-    background-color:adjust-color(rgb(5, 2, 53),$lightness: 100% / $i);
-}
-}
-
-/****************************************верстка меню по ВЕМ******************************************/
-.menu {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: 20px;
-    &__item {
-        color: rgb(84, 209, 188);
-        text-transform: uppercase;
-        text-decoration: none;
-        transition: all 0.4s;
-        &:hover {
-            color: rgb(228, 231, 23);
+    &__btn{
+        border: none;
+        transition: all 0.3s;
+        &--login{
+            color: $color-btn;
+            background: $bg-btn;
+            &:hover {
+                background-color: adjust-color($bg-btn,$lightness:-20% );
+            }
         }
-        &--active {
-            font-weight: bold;
-            color: crimson;
-        }
-        @media(max-width:900px){
-            font-size: 20px;
+        &--reg{
+            color:adjust-color($bg-btn,$lightness:20%);
+            background: adjust-color($bg-btn,$blackness:20%);
+            &:hover {
+                background-color: adjust-color($bg-btn,$lightness:-30% );
+            }
         }
     }
-    @media(max-width:768px){
-        display: none;
+    div {
+        padding-top: 10px;
     }
+    div:first-child{
+        padding-top: 0;
+    }
+}
+
+@mixin set-size($font-size:16px) {
+    font-size: $font-size;
+    padding: $font-size;
 }
